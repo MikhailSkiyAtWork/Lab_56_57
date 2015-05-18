@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="capitals">
+        <item>Moscow</item>
+        <item>Berlin</item>
+        <item>Paris</item>
+        <item>Amsterdam</item>
+        <item>Vienna</item>
+        <item>Madrid</item>
+        <item>Rome</item>
+        <item>Caracas</item>
+        <item>Dakar</item>
+        <item>Cairo</item>
+        <item>Bangkok</item>
+        <item>London</item>
+    </string-array>
+
+    <string-array name="description">
+        <item>The capital of Russia</item>
+        <item>The capital of Germany</item>
+        <item>The capital of France</item>
+        <item>The capital of Nederlands</item>
+        <item>The capital of Austria</item>
+        <item>The capital of Spain</item>
+        <item>The capital of Italy</item>
+        <item>The capital of Venesuela</item>
+        <item>The capital of Senegal</item>
+        <item>The capital of Egypt</item>
+        <item>The capital of Thailand</item>
+        <item>The capital of England</item>
+    </string-array>
+
+    <string-array name="spinner">
+        <item>Linear Layout</item>
+        <item>Relative Layout</item>
+    </string-array>
+
+</resources>

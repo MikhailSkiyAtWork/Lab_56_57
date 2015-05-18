@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Lab_56_57</string>
+
+    <!--All values for list -->
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+
+    <!--All values for action bar menu -->
+    <string name="action_settings">Settings</string>
+    <string name = "linear_layout">Linear Layout</string>
+    <string name = "relative_layout">5</string>
+</resources>
