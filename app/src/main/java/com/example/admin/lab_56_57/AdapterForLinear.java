@@ -42,6 +42,7 @@ public class AdapterForLinear extends ArrayAdapter {
         nameOfCapital.setText(values[position]);
         detailsOfCapital.setText(details[position]);
         image.setImageResource(R.mipmap.ic_launcher);
+        smallImage.setImageResource(R.mipmap.ic_launcher);
 
         // This code helps hide every second description field
         if ((position + 1)%2 == 0){

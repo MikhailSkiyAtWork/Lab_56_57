@@ -8,13 +8,4 @@
     android:orderInCategory="100"
     app:showAsAction="never" />
 
-    <item android:id="@+id/linear_layout"
-        android:title="@string/linear_layout"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
-
-    <item android:id="@+id/relative_layout"
-        android:title="@string/relative_layout"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
 </menu>
