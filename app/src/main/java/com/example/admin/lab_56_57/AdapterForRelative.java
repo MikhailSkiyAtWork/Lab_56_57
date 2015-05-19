@@ -42,6 +42,10 @@ public class AdapterForRelative extends ArrayAdapter{
         image.setImageResource(R.mipmap.ic_launcher);
         smallImage.setImageResource(R.mipmap.ic_launcher);
 
+        // This code helps hide every second description field
+        if ((position + 1)%2 == 0){
+            detailsOfCapital.setVisibility(View.INVISIBLE);
+        }
         // This code helps hide every 3rd image in ListView
         if ((position + 1) % 3 == 0) {
             smallImage.setVisibility(View.INVISIBLE);
