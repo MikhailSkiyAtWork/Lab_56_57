@@ -11,7 +11,7 @@ import android.widget.Spinner;
 
 
 /**
- * Created by Admin on 18.05.2015.
+ * Created by Mikhail Valuyskiy on 18.05.2015.
  */
 public class MenuFragment extends android.support.v4.app.Fragment {
 
@@ -45,7 +45,7 @@ public class MenuFragment extends android.support.v4.app.Fragment {
         adapterForRelative_ = new AdapterForRelative(this.getActivity(),values, details);
         adapterForLinear_ = new AdapterForLinear(this.getActivity(),values,details);
 
-        listView.setAdapter(adapterForRelative_);
+        listView.setAdapter(adapterForLinear_);
 
         spinnerAdapter_ = new ArrayAdapter<String>(
                 getActivity(),
@@ -63,11 +63,11 @@ public class MenuFragment extends android.support.v4.app.Fragment {
                 String city = parent.getItemAtPosition(pos).toString();
                 ListView listView = (ListView) getActivity().findViewById(R.id.list_view);
                 if (city.equals(LINEAR)){
-                    listView.setAdapter(adapterForRelative_);
+                    listView.setAdapter(adapterForLinear_);
                     adapterForRelative_.notifyDataSetChanged();
                 }
                 else if (city.equals(RELATIVE)){
-                    listView.setAdapter(adapterForLinear_);
+                    listView.setAdapter(adapterForRelative_);
                     adapterForLinear_.notifyDataSetChanged();
                 }
 
