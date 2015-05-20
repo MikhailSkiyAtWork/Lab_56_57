@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ActivityForLab57" >
+        </activity>
+        <activity
+            android:name=".BigListActivity"
+            android:label="@string/title_activity_big_list" >
+        </activity>
     </application>
 
 </manifest>

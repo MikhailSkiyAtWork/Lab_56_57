@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -21,11 +23,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container,new MenuFragment())
-                    .commit();
-        }
+
+        // Button for launching activity for Lab #56
+        Button launcher56 = (Button)findViewById(R.id.launcher56);
+
+        launcher56.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Intent intent = new Intent(MainActivity.this,BigListActivity.class);
+                  startActivity(intent);
+              }
+          }
+
+        );
+
+        // Button for launching activity for Lab #57
+        Button launcher57 = (Button)findViewById(R.id.launcher57);
+
+        launcher57.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Intent intent = new Intent(MainActivity.this,ActivityForLab57.class);
+                  startActivity(intent);
+                  }
+              }
+        );
     }
 
 
@@ -40,7 +62,13 @@ public boolean onCreateOptionsMenu(Menu menu) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()){
+            case R.id.action_lab:
+                Intent intent = new Intent(this,ActivityForLab57.class);
+                startActivity(intent);
+                return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }
