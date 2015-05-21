@@ -1,5 +1,6 @@
 package com.example.admin.lab_56_57;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,7 +49,7 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
 
         // List of objects for title and description
         List<ItemInfo> values = new ArrayList<ItemInfo>();
-
+        
         // Just make sure that the number of items are equal
         // Otherwise not all items will have description or title
         // May cause errors
