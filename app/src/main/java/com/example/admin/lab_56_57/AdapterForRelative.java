@@ -37,7 +37,7 @@ public class AdapterForRelative extends ArrayAdapter<AppInfo> {
         nameOfCapital.setText(getItem(position).appname);
         detailsOfCapital.setText(Utility.makeDescription(getItem(position).targetSdkVersion,getItem(position).size));
         image.setImageResource(R.mipmap.ic_launcher);
-        smallImage.setImageResource(R.mipmap.ic_launcher);
+        smallImage.setImageDrawable(getItem(position).icon);
 
         // This code helps hide every second description field
         if (Utility.isItSecondItem(position)) {

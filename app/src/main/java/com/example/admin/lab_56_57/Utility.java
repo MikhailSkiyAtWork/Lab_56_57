@@ -4,6 +4,13 @@ package com.example.admin.lab_56_57;
  * Created by Mikhail Valuyskiy on 21.05.2015.
  */
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+
+import java.io.File;
+
 /**
  * Utility class
  */
@@ -44,6 +51,33 @@ public class Utility {
         return description;
     }
 
+    /**
+     * Get icon
+     * @param packageManager
+     * @param packageInfo
+     * @return
+     */
+    public static Drawable getIcon(PackageManager packageManager,ApplicationInfo packageInfo){
+        // Getting icon of app
+        Drawable icon = packageInfo.loadIcon(packageManager);
+        return icon;
+    }
 
+    /**
+     * Get size of app
+     * @param packageManager
+     * @param packageInfo
+     * @return
+     */
+    public static double getSize (PackageManager packageManager,ApplicationInfo packageInfo){
+        double size = 0;
+        try {
+            File file = new File(packageInfo.sourceDir);
+            size = file.length();
+        } catch (Exception e) {
+            Log.e("ERROR", e.getMessage());
+        }
+        return size;
+    }
 
 }

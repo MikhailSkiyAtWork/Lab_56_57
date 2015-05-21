@@ -1,8 +1,12 @@
 package com.example.admin.lab_56_57;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,22 +51,21 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
         // List of objects for title and description
         List<AppInfo> values = new ArrayList<AppInfo>();
 
+        PackageManager packageManager = getActivity().getPackageManager();
+        List<ApplicationInfo> packages = packageManager.getInstalledApplications(0);
 
-        final PackageManager pm = getActivity().getPackageManager();
-        List<ApplicationInfo> packages = pm.getInstalledApplications(0);
 
-        double size = 0;
         for (ApplicationInfo packageInfo : packages) {
-            try {
-                File file = new File(packageInfo.sourceDir);
-                size = file.length();
-            } catch (Exception e) {
-                Log.e("ERROR", e.getMessage());
-            }
-
-            AppInfo singleItem = new AppInfo(packageInfo.packageName, packageInfo.targetSdkVersion, size);
+            // Size of app
+            double size = Utility.getSize(packageManager,packageInfo);
+            // Getting icon of app
+            Drawable icon = Utility.getIcon(packageManager,packageInfo);
+            // Adding all values to object
+            AppInfo singleItem = new AppInfo(packageInfo.packageName, packageInfo.targetSdkVersion, size,icon);
             values.add(singleItem);
         }
+
+
 
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);
 
@@ -76,6 +79,7 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
                 R.layout.support_simple_spinner_dropdown_item,
                 valuesForSpinner
         );
+
 
         menuSpinner_ = (Spinner) rootView.findViewById(R.id.menu_spinner);
         menuSpinner_.setAdapter(spinnerAdapter_);
