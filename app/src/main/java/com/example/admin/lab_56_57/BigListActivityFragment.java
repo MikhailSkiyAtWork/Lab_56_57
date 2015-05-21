@@ -42,9 +42,15 @@ public class BigListActivityFragment extends  android.support.v4.app.Fragment{
 
         List<ItemInfo> values = new ArrayList<ItemInfo>();
 
+        int fictionalId = 1;
         for (int i = 0; i < COUNT; i++){
-            ItemInfo singleItem = new ItemInfo(TITLE + i, DESCRIPTION + i);
+            ItemInfo singleItem = new ItemInfo(fictionalId, TITLE + i, DESCRIPTION + i);
             values.add(singleItem);
+            fictionalId ++;
+            if (fictionalId >4) {
+                fictionalId = 1;
+            }
+
         }
 
         ListView listView = (ListView) rootView.findViewById(R.id.big_list_view);
