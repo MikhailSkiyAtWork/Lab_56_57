@@ -15,6 +15,10 @@ import java.util.List;
 /**
  * Created by Mikhail Skiy on 20.05.2015.
  */
+
+/**
+ * Custom adapter for big list
+ */
 public class AdapterForBigList extends ArrayAdapter<ItemInfo> {
 
     /**
@@ -63,13 +67,13 @@ public class AdapterForBigList extends ArrayAdapter<ItemInfo> {
      */
     private void setImage(ViewHolder viewHolder, int position){
 
-        if ((position + 1) % 4 == 0) {
+        if ((Utility.isItFourthImage(position))) {
             viewHolder.image.setImageResource(R.mipmap.fog);
         }
-        else if ((position + 1) % 2 == 0) {
+        else if (Utility.isItSecondImage(position)) {
             viewHolder.image.setImageResource(R.mipmap.cloudy);
         }
-        else if ((position + 1) % 3 == 0) {
+        else if ((Utility.isItThirdImage(position))) {
             viewHolder.image.setImageResource(R.mipmap.flurries);
         }
         else {

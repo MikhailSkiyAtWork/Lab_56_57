@@ -40,20 +40,10 @@ public class BigListActivityFragment extends  android.support.v4.app.Fragment{
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_big_list, container, false);
 
-        String [] names = new String[COUNT];
-        for (int i =0;i<names.length;i++){
-            names[i]=TITLE + i;
-        }
-
-        String [] details = new String[COUNT];
-        for (int i =0;i<details.length;i++){
-            details[i]=DESCRIPTION + i;
-        }
-
         List<ItemInfo> values = new ArrayList<ItemInfo>();
 
         for (int i = 0; i < COUNT; i++){
-            ItemInfo singleItem = new ItemInfo(TITLE + i,DESCRIPTION + i);
+            ItemInfo singleItem = new ItemInfo(TITLE + i, DESCRIPTION + i);
             values.add(singleItem);
         }
 
