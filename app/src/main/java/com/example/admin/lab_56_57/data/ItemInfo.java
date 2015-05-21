@@ -12,12 +12,12 @@ public class ItemInfo {
     public String title;
     public String description;
 
-    public ItemInfo(String title, String description){
+    public ItemInfo(String title, String description) {
         this.title = title;
         this.description = description;
     }
 
-    public ItemInfo(int imageId,String title, String description){
+    public ItemInfo(int imageId, String title, String description) {
         this.imageId = imageId;
         this.title = title;
         this.description = description;

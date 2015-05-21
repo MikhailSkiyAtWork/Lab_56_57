@@ -19,14 +19,14 @@ import java.util.List;
 /**
  * Custom adapter, which based on RelativeLayout
  */
-public class AdapterForRelative extends ArrayAdapter<ItemInfo>{
+public class AdapterForRelative extends ArrayAdapter<ItemInfo> {
 
-    public AdapterForRelative(Context context, List<ItemInfo> values){
-       super(context,R.layout.relative_list_item,values);
+    public AdapterForRelative(Context context, List<ItemInfo> values) {
+        super(context, R.layout.relative_list_item, values);
     }
 
     @Override
-    public View getView(int position, View convertView,ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.relative_list_item, parent, false);
         TextView nameOfCapital = (TextView) view.findViewById(R.id.list_item_title);
         TextView detailsOfCapital = (TextView) view.findViewById(R.id.list_item_details);

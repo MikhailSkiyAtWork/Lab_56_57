@@ -15,7 +15,7 @@ public class ActivityForLab57 extends AppCompatActivity {
         setContentView(R.layout.activity_activity_for_lab57);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container,new ActivityForLab57Fragment())
+                    .add(R.id.container, new ActivityForLab57Fragment())
                     .commit();
         }
     }

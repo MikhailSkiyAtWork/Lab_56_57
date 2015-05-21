@@ -11,26 +11,26 @@ public class Utility {
 
     /**
      * Checks is it second item or not
+     *
      * @param position The position of item in ListView
      * @return If it is second image returns true, otherwise false
      */
-    public static boolean isItSecondItem(int position){
-        if ((position +1)%2 == 0){
+    public static boolean isItSecondItem(int position) {
+        if ((position + 1) % 2 == 0) {
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
     /**
      * Checks is it third item or not
+     *
      * @param position The position of item in ListView
      * @return If it is third image returns true, otherwise false
      */
-    public static boolean isItThirdItem(int position){
-        if ((position + 1 ) % 3 == 0) {
+    public static boolean isItThirdItem(int position) {
+        if ((position + 1) % 3 == 0) {
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
 }
