@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.admin.lab_56_57.data.ItemInfo;
+import com.example.admin.lab_56_57.data.*;
 
 import java.util.List;
 
@@ -19,9 +19,9 @@ import java.util.List;
 /**
  * Custom adapter for showing images, text fields and small icon. Based on LinearLayout
  */
-public class AdapterForLinear extends ArrayAdapter<ItemInfo> {
+public class AdapterForLinear extends ArrayAdapter<AppInfo> {
 
-    public AdapterForLinear(Context context, List<ItemInfo> values){
+    public AdapterForLinear(Context context, List<AppInfo> values){
         super(context, R.layout.linear_list_item, values);
 
     }
@@ -34,8 +34,8 @@ public class AdapterForLinear extends ArrayAdapter<ItemInfo> {
         ImageView image = (ImageView) view.findViewById(R.id.list_item_image_view);
         ImageView smallImage = (ImageView) view.findViewById(R.id.list_item_small_image);
 
-        nameOfCapital.setText(getItem(position).title);
-        detailsOfCapital.setText(getItem(position).description);
+        nameOfCapital.setText(getItem(position).appname);
+        detailsOfCapital.setText(Utility.makeDescription(getItem(position).targetSdkVersion,getItem(position).size));
         image.setImageResource(R.mipmap.ic_launcher);
         smallImage.setImageResource(R.mipmap.ic_launcher);
 

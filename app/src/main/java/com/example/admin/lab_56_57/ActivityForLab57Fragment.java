@@ -1,6 +1,8 @@
 package com.example.admin.lab_56_57;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,8 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.example.admin.lab_56_57.data.ItemInfo;
+import com.example.admin.lab_56_57.data.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,28 +44,25 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
         // Get values for spinner
         String[] valuesForSpinner = getResources().getStringArray(R.array.spinner);
 
-        // Get capitals from array
-        String[] titles = getResources().getStringArray(R.array.capitals);
-
-        // Get details about capitals from array
-        String[] details = getResources().getStringArray(R.array.description);
-
         // List of objects for title and description
-        List<ItemInfo> values = new ArrayList<ItemInfo>();
-        
-        // Just make sure that the number of items are equal
-        // Otherwise not all items will have description or title
-        // May cause errors
-        if (titles.length == details.length) {
-            // Add values for menu item into List
-            for (int i = 0; i < titles.length; i++) {
-                ItemInfo singleItem = new ItemInfo(titles[i], details[i]);
-                values.add(singleItem);
-            }
-        } else {
-            Log.e("WARNING", "The number of titles is not equal to the number of description");
-        }
+        List<AppInfo> values = new ArrayList<AppInfo>();
 
+
+        final PackageManager pm = getActivity().getPackageManager();
+        List<ApplicationInfo> packages = pm.getInstalledApplications(0);
+
+        double size = 0;
+        for (ApplicationInfo packageInfo : packages) {
+            try {
+                File file = new File(packageInfo.sourceDir);
+                size = file.length();
+            } catch (Exception e) {
+                Log.e("ERROR", e.getMessage());
+            }
+
+            AppInfo singleItem = new AppInfo(packageInfo.packageName, packageInfo.targetSdkVersion, size);
+            values.add(singleItem);
+        }
 
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);
 

@@ -33,4 +33,17 @@ public class Utility {
         } else return false;
     }
 
+    /**
+     * Creates description for app
+     * @param version
+     * @param size
+     * @return
+     */
+    public static String makeDescription(int version,double size){
+        String description ="Version " + version + "Size: " + size;
+        return description;
+    }
+
+
+
 }
