@@ -10,7 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SimpleTimeZone;
+
+import com.example.admin.lab_56_57.data.ItemInfo;
 
 
 /**
@@ -46,8 +50,15 @@ public class BigListActivityFragment extends  android.support.v4.app.Fragment{
             details[i]=DESCRIPTION + i;
         }
 
+        List<ItemInfo> values = new ArrayList<ItemInfo>();
+
+        for (int i = 0; i < COUNT; i++){
+            ItemInfo singleItem = new ItemInfo(TITLE + i,DESCRIPTION + i);
+            values.add(singleItem);
+        }
+
         ListView listView = (ListView) rootView.findViewById(R.id.big_list_view);
-        adapterForBigList_ = new AdapterForBigList(this.getActivity(),names,details);
+        adapterForBigList_ = new AdapterForBigList(this.getActivity(),values);
         listView.setAdapter(adapterForBigList_);
 
         return rootView;
