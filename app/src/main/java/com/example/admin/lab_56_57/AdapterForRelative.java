@@ -1,6 +1,5 @@
 package com.example.admin.lab_56_57;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,11 +39,11 @@ public class AdapterForRelative extends ArrayAdapter<ItemInfo>{
         smallImage.setImageResource(R.mipmap.ic_launcher);
 
         // This code helps hide every second description field
-        if (Utility.isItSecondImage(position)) {
+        if (Utility.isItSecondItem(position)) {
             detailsOfCapital.setVisibility(View.INVISIBLE);
         }
         // This code helps hide every 3rd image in ListView
-        if (Utility.isItThirdImage(position)) {
+        if (Utility.isItThirdItem(position)) {
             smallImage.setVisibility(View.INVISIBLE);
         }
 

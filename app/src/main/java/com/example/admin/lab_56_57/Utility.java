@@ -10,11 +10,11 @@ package com.example.admin.lab_56_57;
 public class Utility {
 
     /**
-     * Checks is it second image or not
-     * @param position The position of image in ListView
+     * Checks is it second item or not
+     * @param position The position of item in ListView
      * @return If it is second image returns true, otherwise false
      */
-    public static boolean isItSecondImage(int position){
+    public static boolean isItSecondItem(int position){
         if ((position + 1)%2 == 0){
             return true;
         }
@@ -22,11 +22,11 @@ public class Utility {
     }
 
     /**
-     * Checks is it third image or not
-     * @param position The position of image in ListView
+     * Checks is it third item or not
+     * @param position The position of item in ListView
      * @return If it is third image returns true, otherwise false
      */
-    public static boolean isItThirdImage(int position){
+    public static boolean isItThirdItem(int position){
         if ((position + 1) % 3 == 0) {
             return true;
         }
@@ -38,8 +38,8 @@ public class Utility {
      * @param position The position of image in ListView
      * @return If it is fourth image returns true, otherwise false
      */
-    public static boolean isItFourthImage(int position){
-        if ((position + 1) % 4 == 0) {
+    public static boolean isItFourthItem(int position){
+        if (((position + 1)%10) % 4 == 0) {
             return true;
         }
         else return false;

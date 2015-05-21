@@ -67,13 +67,13 @@ public class AdapterForBigList extends ArrayAdapter<ItemInfo> {
      */
     private void setImage(ViewHolder viewHolder, int position){
 
-        if ((Utility.isItFourthImage(position))) {
+        if ((Utility.isItFourthItem(position))) {
             viewHolder.image.setImageResource(R.mipmap.fog);
         }
-        else if (Utility.isItSecondImage(position)) {
+        else if (Utility.isItSecondItem(position)) {
             viewHolder.image.setImageResource(R.mipmap.cloudy);
         }
-        else if ((Utility.isItThirdImage(position))) {
+        else if ((Utility.isItThirdItem(position))) {
             viewHolder.image.setImageResource(R.mipmap.flurries);
         }
         else {
