@@ -34,10 +34,10 @@ public class AdapterForRelative extends ArrayAdapter<AppInfo> {
         ImageView image = (ImageView) view.findViewById(R.id.list_item_image_view);
         ImageView smallImage = (ImageView) view.findViewById(R.id.list_item_small_image);
 
-        nameOfCapital.setText(getItem(position).appname);
-        detailsOfCapital.setText(Utility.makeDescription(getItem(position).targetSdkVersion,getItem(position).size));
+        nameOfCapital.setText(getItem(position).getTitle());
+        detailsOfCapital.setText(Utility.makeDescription(getItem(position).getTargetSdkVersion(),getItem(position).getSize()));
         image.setImageResource(R.mipmap.ic_launcher);
-        smallImage.setImageDrawable(getItem(position).icon);
+        smallImage.setImageDrawable(getItem(position).getIcon());
 
         // This code helps hide every second description field
         if (Utility.isItSecondItem(position)) {

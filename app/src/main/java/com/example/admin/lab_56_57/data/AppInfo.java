@@ -16,13 +16,29 @@ import java.util.PriorityQueue;
  * Describes different information about app
  */
 public class AppInfo {
-    public String appname;
-    public int targetSdkVersion;
-    public double size;
-    public Drawable icon;
+    private String title;
+    private int targetSdkVersion;
+    private double size;
+    private Drawable icon;
 
-    public AppInfo(String appname, int version, double size,Drawable icon) {
-        this.appname = appname;
+    public String getTitle() {
+        return title;
+    }
+
+    public int getTargetSdkVersion() {
+        return targetSdkVersion;
+    }
+
+    public double getSize() {
+        return size;
+    }
+
+    public Drawable getIcon() {
+        return icon;
+    }
+
+    public AppInfo(String appname, int version, double size, Drawable icon) {
+        this.title = appname;
         this.targetSdkVersion = version;
         this.size = size;
         this.icon = icon;
