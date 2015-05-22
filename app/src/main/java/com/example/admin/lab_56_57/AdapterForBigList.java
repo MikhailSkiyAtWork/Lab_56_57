@@ -51,9 +51,9 @@ public class AdapterForBigList extends ArrayAdapter<ItemInfo> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.nameOfItem.setText(getItem(position).title);
-        viewHolder.descriptionOfItem.setText(getItem(position).description);
-        setImage(viewHolder, getItem(position).imageId);
+        viewHolder.nameOfItem.setText(getItem(position).getTitle());
+        viewHolder.descriptionOfItem.setText(getItem(position).getDescription());
+        setImage(viewHolder, getItem(position).getImageId());
 
         return convertView;
     }

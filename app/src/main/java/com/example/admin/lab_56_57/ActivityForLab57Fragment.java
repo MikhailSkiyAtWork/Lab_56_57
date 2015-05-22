@@ -1,6 +1,12 @@
 package com.example.admin.lab_56_57;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,8 +18,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.example.admin.lab_56_57.data.ItemInfo;
+import com.example.admin.lab_56_57.data.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,27 +48,23 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
         // Get values for spinner
         String[] valuesForSpinner = getResources().getStringArray(R.array.spinner);
 
-        // Get capitals from array
-        String[] titles = getResources().getStringArray(R.array.capitals);
-
-        // Get details about capitals from array
-        String[] details = getResources().getStringArray(R.array.description);
-
         // List of objects for title and description
-        List<ItemInfo> values = new ArrayList<ItemInfo>();
-        
-        // Just make sure that the number of items are equal
-        // Otherwise not all items will have description or title
-        // May cause errors
-        if (titles.length == details.length) {
-            // Add values for menu item into List
-            for (int i = 0; i < titles.length; i++) {
-                ItemInfo singleItem = new ItemInfo(titles[i], details[i]);
-                values.add(singleItem);
-            }
-        } else {
-            Log.e("WARNING", "The number of titles is not equal to the number of description");
+        List<AppInfo> values = new ArrayList<AppInfo>();
+
+        PackageManager packageManager = getActivity().getPackageManager();
+        List<ApplicationInfo> packages = packageManager.getInstalledApplications(0);
+
+
+        for (ApplicationInfo packageInfo : packages) {
+            // Size of app
+            double size = Utility.getSize(packageManager,packageInfo);
+            // Getting icon of app
+            Drawable icon = Utility.getIcon(packageManager,packageInfo);
+            // Adding all values to object
+            AppInfo singleItem = new AppInfo(packageInfo.packageName, packageInfo.targetSdkVersion, size,icon);
+            values.add(singleItem);
         }
+
 
 
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);
@@ -76,6 +79,7 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
                 R.layout.support_simple_spinner_dropdown_item,
                 valuesForSpinner
         );
+
 
         menuSpinner_ = (Spinner) rootView.findViewById(R.id.menu_spinner);
         menuSpinner_.setAdapter(spinnerAdapter_);
