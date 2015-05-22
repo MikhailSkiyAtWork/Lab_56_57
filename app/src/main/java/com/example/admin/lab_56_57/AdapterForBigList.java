@@ -15,6 +15,10 @@ import java.util.List;
 /**
  * Created by Mikhail Skiy on 20.05.2015.
  */
+
+/**
+ * Custom adapter for big list
+ */
 public class AdapterForBigList extends ArrayAdapter<ItemInfo> {
 
     /**
@@ -26,54 +30,54 @@ public class AdapterForBigList extends ArrayAdapter<ItemInfo> {
         ImageView image;
     }
 
-    public AdapterForBigList (Context context,List<ItemInfo> values){
-        super(context,R.layout.big_list_item,values);
+    public AdapterForBigList(Context context, List<ItemInfo> values) {
+        super(context, R.layout.big_list_item, values);
     }
 
     @Override
-    public View getView (int position,View convertView,ViewGroup parent){
+    public View getView(int position, View convertView, ViewGroup parent) {
 
         ViewHolder viewHolder;
 
-        if (convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.big_list_item,parent,false);
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.big_list_item, parent, false);
             viewHolder = new ViewHolder();
 
-            viewHolder.nameOfItem = (TextView)convertView.findViewById(R.id.big_list_item_title);
-            viewHolder.descriptionOfItem = (TextView)convertView.findViewById(R.id.big_list_item_details);
-            viewHolder.image = (ImageView)convertView.findViewById(R.id.big_list_item_image_view);
+            viewHolder.nameOfItem = (TextView) convertView.findViewById(R.id.big_list_item_title);
+            viewHolder.descriptionOfItem = (TextView) convertView.findViewById(R.id.big_list_item_details);
+            viewHolder.image = (ImageView) convertView.findViewById(R.id.big_list_item_image_view);
             convertView.setTag(viewHolder);
-        }
-        else
-        {
-            viewHolder = (ViewHolder)convertView.getTag();
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         viewHolder.nameOfItem.setText(getItem(position).title);
         viewHolder.descriptionOfItem.setText(getItem(position).description);
-        setImage(viewHolder,position);
+        setImage(viewHolder, getItem(position).imageId);
 
         return convertView;
     }
 
     /**
      * Sets the image depends on the position
+     *
      * @param viewHolder
-     * @param position
+     * @param imageId
      */
-    private void setImage(ViewHolder viewHolder, int position){
+    private void setImage(ViewHolder viewHolder, int imageId) {
 
-        if ((position + 1) % 4 == 0) {
-            viewHolder.image.setImageResource(R.mipmap.fog);
-        }
-        else if ((position + 1) % 2 == 0) {
-            viewHolder.image.setImageResource(R.mipmap.cloudy);
-        }
-        else if ((position + 1) % 3 == 0) {
-            viewHolder.image.setImageResource(R.mipmap.flurries);
-        }
-        else {
-             viewHolder.image.setImageResource(R.mipmap.clear);
+        switch (imageId) {
+            case 1:
+                viewHolder.image.setImageResource(R.mipmap.clear);
+                break;
+            case 2:
+                viewHolder.image.setImageResource(R.mipmap.cloudy);
+                break;
+            case 3:
+                viewHolder.image.setImageResource(R.mipmap.flurries);
+                break;
+            case 4:
+                viewHolder.image.setImageResource(R.mipmap.fog);
         }
     }
 }

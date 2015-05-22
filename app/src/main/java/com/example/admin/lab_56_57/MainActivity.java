@@ -25,46 +25,46 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Button for launching activity for Lab #56
-        Button launcher56 = (Button)findViewById(R.id.launcher56);
+        Button launcher56 = (Button) findViewById(R.id.launcher56);
 
         launcher56.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  Intent intent = new Intent(MainActivity.this,BigListActivity.class);
-                  startActivity(intent);
-              }
-          }
+                                          @Override
+                                          public void onClick(View v) {
+                                              Intent intent = new Intent(MainActivity.this, BigListActivity.class);
+                                              startActivity(intent);
+                                          }
+                                      }
 
         );
 
         // Button for launching activity for Lab #57
-        Button launcher57 = (Button)findViewById(R.id.launcher57);
+        Button launcher57 = (Button) findViewById(R.id.launcher57);
 
         launcher57.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  Intent intent = new Intent(MainActivity.this,ActivityForLab57.class);
-                  startActivity(intent);
-                  }
-              }
+                                          @Override
+                                          public void onClick(View v) {
+                                              Intent intent = new Intent(MainActivity.this, ActivityForLab57.class);
+                                              startActivity(intent);
+                                          }
+                                      }
         );
     }
 
 
-@Override
-public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.menu_main, menu);
-    return true;
-}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_lab:
-                Intent intent = new Intent(this,ActivityForLab57.class);
+                Intent intent = new Intent(this, ActivityForLab57.class);
                 startActivity(intent);
                 return true;
         }
