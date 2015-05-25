@@ -27,8 +27,17 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
     private AdapterForRelative adapterForRelative_;
     private Spinner menuSpinner_;
     private ArrayAdapter<String> spinnerAdapter_;
-    private final String LINEAR = "Linear Layout";
-    private final String RELATIVE = "Relative Layout";
+
+    private enum Mode_ {
+        LINEAR("Linear Layout"),
+        RELATIVE("Relative Layout");
+
+        private final String text_;
+
+        private Mode_(final String text) {
+            this.text_ = text;
+        }
+    }
 
     public ActivityForLab57Fragment() {
     }
@@ -79,10 +88,10 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 String mode = parent.getItemAtPosition(pos).toString();
                 ListView listView = (ListView) getActivity().findViewById(R.id.list_view);
-                if (mode.equals(LINEAR)) {
+                if (mode.equals(Mode_.LINEAR)) {
                     listView.setAdapter(adapterForLinear_);
                     adapterForRelative_.notifyDataSetChanged();
-                } else if (mode.equals(RELATIVE)) {
+                } else if (mode.equals(Mode_.RELATIVE)) {
                     listView.setAdapter(adapterForRelative_);
                     adapterForLinear_.notifyDataSetChanged();
                 }
