@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Button for launching activity for Lab #56
-        Button launcher56 = (Button) findViewById(R.id.launch_56_activity_button);
+        Button launchActivity56Button = (Button) findViewById(R.id.launch_56_activity_button);
 
-        launcher56.setOnClickListener(new View.OnClickListener() {
+        launchActivity56Button.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
                   Intent intent = new Intent(MainActivity.this, BigListActivity.class);
