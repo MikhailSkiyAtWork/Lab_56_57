@@ -12,9 +12,11 @@ import android.util.Log;
 import java.io.File;
 
 /**
- * Utility class
+ * Utils class
  */
-public class Utility {
+public class Utils {
+
+    public static final String TAG = "ERROR";
 
     /**
      * Checks is it second item or not
@@ -42,22 +44,16 @@ public class Utility {
 
     /**
      * Creates description for app
-     * @param version
-     * @param size
-     * @return
      */
-    public static String makeDescription(int version,double size){
-        String description ="Version " + version + "Size: " + size;
+    public static String makeDescription(int version, double size) {
+        String description = "Version " + version + "Size: " + size;
         return description;
     }
 
     /**
      * Get icon
-     * @param packageManager
-     * @param packageInfo
-     * @return
      */
-    public static Drawable getIcon(PackageManager packageManager,ApplicationInfo packageInfo){
+    public static Drawable getIcon(PackageManager packageManager, ApplicationInfo packageInfo) {
         // Getting icon of app
         Drawable icon = packageInfo.loadIcon(packageManager);
         return icon;
@@ -65,17 +61,14 @@ public class Utility {
 
     /**
      * Get size of app
-     * @param packageManager
-     * @param packageInfo
-     * @return
      */
-    public static double getSize (PackageManager packageManager,ApplicationInfo packageInfo){
+    public static double getSize(PackageManager packageManager, ApplicationInfo packageInfo) {
         double size = 0;
         try {
             File file = new File(packageInfo.sourceDir);
             size = file.length();
         } catch (Exception e) {
-            Log.e("ERROR", e.getMessage());
+            Log.e(TAG, e.getMessage());
         }
         return size;
     }

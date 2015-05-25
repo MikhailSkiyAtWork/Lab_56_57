@@ -8,30 +8,30 @@ package com.example.admin.lab_56_57.data;
  * Represent the item in the ListView
  */
 public class ItemInfo {
-    private String title;
-    private String description;
-    private int imageId;
+    private String title_;
+    private String description_;
+    private int imageId_;
 
-    public String getTitle() {
-        return title;
+    public ItemInfo(int imageId, String title, String description) {
+        this.imageId_ = imageId;
+        this.title_ = title;
+        this.description_ = description;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTitle_() {
+        return title_;
     }
 
-    public int getImageId() {
-        return imageId;
+    public String getDescription_() {
+        return description_;
+    }
+
+    public int getImageId_() {
+        return imageId_;
     }
 
     public ItemInfo(String title, String description) {
-        this.title = title;
-        this.description = description;
-    }
-
-    public ItemInfo(int imageId, String title, String description) {
-        this.imageId = imageId;
-        this.title = title;
-        this.description = description;
+        this.title_ = title;
+        this.description_ = description;
     }
 }
