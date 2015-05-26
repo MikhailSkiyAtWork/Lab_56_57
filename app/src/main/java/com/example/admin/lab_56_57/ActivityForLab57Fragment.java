@@ -25,20 +25,14 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
 
     private static final String LINEAR_LAYOUT = "Linear Layout";
     private static final String RELATIVE_LAYOUT = "Relative Layout";
-    private AdapterForLinear adapterForLinear_;
-    private AdapterForRelative adapterForRelative_;
+    private AdapterForLinear linearAdapter_;
+    private AdapterForRelative relativeAdapter_;
     private Spinner menuSpinner_;
     private ArrayAdapter<String> spinnerAdapter_;
-
-//    public enum Mode {
-//        LINEAR,
-//        RELATIVE
-//    }
 
     public enum Mode {
         LINEAR(LINEAR_LAYOUT),
         RELATIVE(RELATIVE_LAYOUT);
-
 
         private String text_;
 
@@ -90,10 +84,10 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
 
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);
 
-        adapterForRelative_ = new AdapterForRelative(this.getActivity(), appInfoValues);
-        adapterForLinear_ = new AdapterForLinear(this.getActivity(), appInfoValues);
+        relativeAdapter_ = new AdapterForRelative(this.getActivity(), appInfoValues);
+        linearAdapter_ = new AdapterForLinear(this.getActivity(), appInfoValues);
 
-        listView.setAdapter(adapterForLinear_);
+        listView.setAdapter(linearAdapter_);
 
         spinnerAdapter_ = new ArrayAdapter<String>(
                 getActivity(),
@@ -116,12 +110,12 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
 
                 switch (layoutMode) {
                     case LINEAR:
-                        listView.setAdapter(adapterForLinear_);
-                        adapterForRelative_.notifyDataSetChanged();
+                        listView.setAdapter(linearAdapter_);
+                        relativeAdapter_.notifyDataSetChanged();
                         break;
                     case RELATIVE:
-                        listView.setAdapter(adapterForRelative_);
-                        adapterForLinear_.notifyDataSetChanged();
+                        listView.setAdapter(relativeAdapter_);
+                        linearAdapter_.notifyDataSetChanged();
                         break;
                     default:
                         break;
@@ -141,6 +135,6 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
     public void onResume() {
         super.onResume();
         ListView listView = (ListView) getActivity().findViewById(R.id.list_view);
-        listView.setAdapter(adapterForRelative_);
+        listView.setAdapter(relativeAdapter_);
     }
 }
