@@ -3,20 +3,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!-- Values for big list item layout -->
-    <dimen name="padding_left_for_big_list">30dp</dimen>
-    <dimen name="padding_top_for_big_list">10dp</dimen>
-
-    <!-- Values for linear list item layout -->
-    <dimen name="padding_left_for_linear_list">30dp</dimen>
-    <dimen name="padding_top_for_linear_list">10dp</dimen>
-    <dimen name="width_for_linear_list">25dp</dimen>
-    <dimen name="height_for_linear_list">25dp</dimen>
-
-    <!-- Values for relative list item layout -->
-    <dimen name="padding_left_for_relative_list">30dp</dimen>
-    <dimen name="padding_top_for_relative_list">10dp</dimen>
-    <dimen name="width_for_relative_list">25dp</dimen>
-    <dimen name="height_for_relative_list">25dp</dimen>
+    <!-- Common values for list item layout -->
+    <dimen name="common_padding_left_for_list">30dp</dimen>
+    <dimen name="common_padding_top_for_list">10dp</dimen>
+    <dimen name="common_width_for_list">25dp</dimen>
+    <dimen name="common_height_for_list">25dp</dimen>
 
 </resources>

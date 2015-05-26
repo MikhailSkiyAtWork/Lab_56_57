@@ -21,11 +21,11 @@ import java.util.List;
  */
 public class AdapterForRelative extends ArrayAdapter<AppInfo> {
 
-    private static class ViewHolder_ {
-        TextView nameOfCapitalView;
-        TextView detailsOfCapitalView;
-        ImageView imageView;
-        ImageView smallImageView;
+    private static class ViewHolder {
+        TextView nameTextView_;
+        TextView detailsTextView_;
+        ImageView imageView_;
+        ImageView smallImageView_;
     }
 
     public AdapterForRelative(Context context, List<AppInfo> values) {
@@ -34,33 +34,33 @@ public class AdapterForRelative extends ArrayAdapter<AppInfo> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder_ viewHolder;
+        ViewHolder viewHolder;
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.relative_list_item, parent, false);
-            viewHolder = new ViewHolder_();
+            viewHolder = new ViewHolder();
 
-            viewHolder.nameOfCapitalView = (TextView) convertView.findViewById(R.id.list_item_title);
-            viewHolder.detailsOfCapitalView = (TextView) convertView.findViewById(R.id.list_item_details);
-            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.list_item_image_view);
-            viewHolder.smallImageView = (ImageView) convertView.findViewById(R.id.list_item_small_image);
+            viewHolder.nameTextView_ = (TextView) convertView.findViewById(R.id.list_item_title);
+            viewHolder.detailsTextView_ = (TextView) convertView.findViewById(R.id.list_item_details);
+            viewHolder.imageView_ = (ImageView) convertView.findViewById(R.id.list_item_image_view);
+            viewHolder.smallImageView_ = (ImageView) convertView.findViewById(R.id.list_item_small_image);
             convertView.setTag(viewHolder);
         } else {
-            viewHolder = (ViewHolder_) convertView.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.nameOfCapitalView.setText(getItem(position).getTitle_());
-        viewHolder.detailsOfCapitalView.setText(Utils.makeDescription(getItem(position).getTargetSdkVersion_(), getItem(position).getSize_()));
-        viewHolder.imageView.setImageResource(R.mipmap.ic_launcher);
-        viewHolder.smallImageView.setImageDrawable(getItem(position).getIcon_());
+        viewHolder.nameTextView_.setText(getItem(position).getTitle_());
+        viewHolder.detailsTextView_.setText(Utils.makeDescription(getItem(position).getTargetSdkVersion_(), getItem(position).getSize_()));
+        viewHolder.imageView_.setImageResource(R.mipmap.ic_launcher);
+        viewHolder.smallImageView_.setImageDrawable(getItem(position).getIcon_());
 
         // This code helps hide every second description field
         if (Utils.isItSecondItem(position)) {
-            viewHolder.detailsOfCapitalView.setVisibility(View.INVISIBLE);
+            viewHolder.detailsTextView_.setVisibility(View.INVISIBLE);
         }
         // This code helps hide every 3rd image in ListView
         if (Utils.isItThirdItem(position)) {
-            viewHolder.smallImageView.setVisibility(View.INVISIBLE);
+            viewHolder.smallImageView_.setVisibility(View.INVISIBLE);
         }
 
         return convertView;

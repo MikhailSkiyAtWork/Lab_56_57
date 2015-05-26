@@ -11,8 +11,5 @@
 
     <!--All values for action bar menu -->
     <string name="action_settings">Settings</string>
-    <string name="linear_layout">Linear Layout</string>
-    <string name="lab">Next lab</string>
     <string name="title_activity_big_list">BigListActivity</string>
-    <string name="hello_world">Hello world!</string>
 </resources>

@@ -12,7 +12,7 @@
     <TextView
         android:id="@+id/list_item_title"
         android:text="@string/title"
-        android:paddingLeft="@dimen/padding_left_for_relative_list"
+        android:paddingLeft="@dimen/common_padding_left_for_list"
         android:layout_toRightOf="@+id/list_item_image_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -20,8 +20,8 @@
     <TextView
         android:id="@+id/list_item_details"
         android:text="@string/description"
-        android:paddingTop="@dimen/padding_top_for_relative_list"
-        android:paddingLeft="@dimen/padding_left_for_relative_list"
+        android:paddingTop="@dimen/common_padding_top_for_list"
+        android:paddingLeft="@dimen/common_padding_left_for_list"
         android:layout_below = "@+id/list_item_title"
         android:layout_toRightOf="@+id/list_item_image_view"
         android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         android:id="@+id/list_item_small_image"
         android:src="@mipmap/ic_launcher"
         android:layout_alignParentRight="true"
-        android:layout_width="@dimen/width_for_relative_list"
-        android:layout_height="@dimen/height_for_relative_list" />
+        android:layout_width="@dimen/common_width_for_list"
+        android:layout_height="@dimen/common_height_for_list" />
 
 </RelativeLayout>
