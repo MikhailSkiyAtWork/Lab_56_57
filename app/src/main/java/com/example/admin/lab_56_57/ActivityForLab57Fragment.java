@@ -23,19 +23,41 @@ import java.util.List;
  */
 public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
 
+    private static final String LINEAR_LAYOUT = "Linear Layout";
+    private static final String RELATIVE_LAYOUT = "Relative Layout";
     private AdapterForLinear adapterForLinear_;
     private AdapterForRelative adapterForRelative_;
     private Spinner menuSpinner_;
     private ArrayAdapter<String> spinnerAdapter_;
 
-    private enum Mode {
-        LINEAR("Linear Layout"),
-        RELATIVE("Relative Layout");
+//    public enum Mode {
+//        LINEAR,
+//        RELATIVE
+//    }
 
-        private final String text_;
+    public enum Mode {
+        LINEAR(LINEAR_LAYOUT),
+        RELATIVE(RELATIVE_LAYOUT);
 
-        private Mode(final String text) {
-            this.text_ = text;
+
+        private String text_;
+
+        private Mode(String text) {
+            text_ = text;
+        }
+
+        public String getText() {
+            return text_;
+        }
+
+        public static Mode get(String text) {
+            if (text.equals(LINEAR.getText())) {
+                return LINEAR;
+            } else if (text.equals(RELATIVE.getText())) {
+                return RELATIVE;
+            } else {
+               throw new IllegalArgumentException("Passed mode string doesn't exist");
+            }
         }
     }
 
@@ -86,16 +108,24 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                String mode = parent.getItemAtPosition(pos).toString();
-                ListView listView = (ListView) getActivity().findViewById(R.id.list_view);
-                if (mode.equals(Mode.LINEAR)) {
-                    listView.setAdapter(adapterForLinear_);
-                    adapterForRelative_.notifyDataSetChanged();
-                } else if (mode.equals(Mode.RELATIVE)) {
-                    listView.setAdapter(adapterForRelative_);
-                    adapterForLinear_.notifyDataSetChanged();
-                }
+                String spinnerMode = parent.getItemAtPosition(pos).toString();
 
+                ListView listView = (ListView) getActivity().findViewById(R.id.list_view);
+
+                Mode layoutMode = Mode.get(spinnerMode);
+
+                switch (layoutMode) {
+                    case LINEAR:
+                        listView.setAdapter(adapterForLinear_);
+                        adapterForRelative_.notifyDataSetChanged();
+                        break;
+                    case RELATIVE:
+                        listView.setAdapter(adapterForRelative_);
+                        adapterForLinear_.notifyDataSetChanged();
+                        break;
+                    default:
+                        break;
+                }
             }
 
             @Override
