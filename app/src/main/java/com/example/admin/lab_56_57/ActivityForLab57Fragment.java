@@ -29,6 +29,9 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
     private AdapterForRelative relativeAdapter_;
     private Spinner menuSpinner_;
     private ArrayAdapter<String> spinnerAdapter_;
+    private Mode layoutMode_;
+
+    public static final int DEFAULT_POSITION = 0;
 
     public enum Mode {
         LINEAR(LINEAR_LAYOUT),
@@ -36,22 +39,22 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
 
         private String text_;
 
-        private Mode(String text) {
-            text_ = text;
-        }
-
-        public String getText() {
-            return text_;
-        }
-
         public static Mode get(String text) {
             if (text.equals(LINEAR.getText())) {
                 return LINEAR;
             } else if (text.equals(RELATIVE.getText())) {
                 return RELATIVE;
             } else {
-               throw new IllegalArgumentException("Passed mode string doesn't exist");
+                throw new IllegalArgumentException("Passed mode string doesn't exist");
             }
+        }
+
+        private Mode(String text) {
+            text_ = text;
+        }
+
+        public String getText() {
+            return text_;
         }
     }
 
@@ -87,8 +90,6 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
         relativeAdapter_ = new AdapterForRelative(this.getActivity(), appInfoValues);
         linearAdapter_ = new AdapterForLinear(this.getActivity(), appInfoValues);
 
-        listView.setAdapter(linearAdapter_);
-
         spinnerAdapter_ = new ArrayAdapter<String>(
                 getActivity(),
                 R.layout.support_simple_spinner_dropdown_item,
@@ -96,6 +97,10 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
         );
 
         menuSpinner_ = (Spinner) rootView.findViewById(R.id.menu_spinner);
+
+        // Select first item by default
+        menuSpinner_.setSelection(DEFAULT_POSITION);
+
         menuSpinner_.setAdapter(spinnerAdapter_);
 
         menuSpinner_.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -106,16 +111,16 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
 
                 ListView listView = (ListView) getActivity().findViewById(R.id.list_view);
 
-                Mode layoutMode = Mode.get(spinnerMode);
+                layoutMode_ = Mode.get(spinnerMode);
 
-                switch (layoutMode) {
+                switch (layoutMode_) {
                     case LINEAR:
                         listView.setAdapter(linearAdapter_);
-                        relativeAdapter_.notifyDataSetChanged();
+                        linearAdapter_.notifyDataSetChanged();
                         break;
                     case RELATIVE:
                         listView.setAdapter(relativeAdapter_);
-                        linearAdapter_.notifyDataSetChanged();
+                        relativeAdapter_.notifyDataSetChanged();
                         break;
                     default:
                         break;
@@ -134,7 +139,7 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ListView listView = (ListView) getActivity().findViewById(R.id.list_view);
-        listView.setAdapter(relativeAdapter_);
+        int position = menuSpinner_.getSelectedItemPosition();
+        menuSpinner_.setSelection(position);
     }
 }
