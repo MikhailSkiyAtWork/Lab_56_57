@@ -18,11 +18,6 @@ public class ItemInfo {
         this.description_ = description;
     }
 
-    public ItemInfo(String title, String description) {
-        this.title_ = title;
-        this.description_ = description;
-    }
-
     public String getTitle() {
         return title_;
     }
