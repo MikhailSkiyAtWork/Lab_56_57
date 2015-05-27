@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner">
+        <item>Linear Layout</item>
+        <item>Relative Layout</item>
+    </string-array>
+</resources>
