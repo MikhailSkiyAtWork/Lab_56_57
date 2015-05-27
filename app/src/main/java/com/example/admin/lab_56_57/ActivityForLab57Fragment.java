@@ -1,15 +1,9 @@
 package com.example.admin.lab_56_57;
 
-import android.app.ActivityManager;
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +14,6 @@ import android.widget.Spinner;
 
 import com.example.admin.lab_56_57.data.*;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,12 +23,40 @@ import java.util.List;
  */
 public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
 
-    private AdapterForLinear adapterForLinear_;
-    private AdapterForRelative adapterForRelative_;
+    private static final String LINEAR_LAYOUT = "Linear Layout";
+    private static final String RELATIVE_LAYOUT = "Relative Layout";
+    private AdapterForLinear linearAdapter_;
+    private AdapterForRelative relativeAdapter_;
     private Spinner menuSpinner_;
     private ArrayAdapter<String> spinnerAdapter_;
-    private final String LINEAR = "Linear Layout";
-    private final String RELATIVE = "Relative Layout";
+    private Mode layoutMode_;
+
+    public static final int DEFAULT_POSITION = 0;
+
+    public enum Mode {
+        LINEAR(LINEAR_LAYOUT),
+        RELATIVE(RELATIVE_LAYOUT);
+
+        private String text_;
+
+        public static Mode get(String text) {
+            if (text.equals(LINEAR.getText())) {
+                return LINEAR;
+            } else if (text.equals(RELATIVE.getText())) {
+                return RELATIVE;
+            } else {
+                throw new IllegalArgumentException("Passed mode string doesn't exist");
+            }
+        }
+
+        private Mode(String text) {
+            text_ = text;
+        }
+
+        public String getText() {
+            return text_;
+        }
+    }
 
     public ActivityForLab57Fragment() {
     }
@@ -43,36 +64,31 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_activity_for_lab57, container, false);
+        View rootView = inflater.inflate(R.layout.lab57_activity_fragment, container, false);
 
         // Get values for spinner
         String[] valuesForSpinner = getResources().getStringArray(R.array.spinner);
 
         // List of objects for title and description
-        List<AppInfo> values = new ArrayList<AppInfo>();
+        List<AppInfo> appInfoValues = new ArrayList<AppInfo>();
 
         PackageManager packageManager = getActivity().getPackageManager();
         List<ApplicationInfo> packages = packageManager.getInstalledApplications(0);
 
-
         for (ApplicationInfo packageInfo : packages) {
             // Size of app
-            double size = Utility.getSize(packageManager,packageInfo);
+            double size = Utils.getSize(packageManager, packageInfo);
             // Getting icon of app
-            Drawable icon = Utility.getIcon(packageManager,packageInfo);
+            Drawable icon = Utils.getIcon(packageManager, packageInfo);
             // Adding all values to object
             AppInfo singleItem = new AppInfo(packageInfo.packageName, packageInfo.targetSdkVersion, size,icon);
-            values.add(singleItem);
+            appInfoValues.add(singleItem);
         }
-
-
 
         ListView listView = (ListView) rootView.findViewById(R.id.list_view);
 
-        adapterForRelative_ = new AdapterForRelative(this.getActivity(), values);
-        adapterForLinear_ = new AdapterForLinear(this.getActivity(), values);
-
-        listView.setAdapter(adapterForLinear_);
+        relativeAdapter_ = new AdapterForRelative(this.getActivity(), appInfoValues);
+        linearAdapter_ = new AdapterForLinear(this.getActivity(), appInfoValues);
 
         spinnerAdapter_ = new ArrayAdapter<String>(
                 getActivity(),
@@ -80,32 +96,42 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
                 valuesForSpinner
         );
 
-
         menuSpinner_ = (Spinner) rootView.findViewById(R.id.menu_spinner);
+
+        // Select first item by default
+        menuSpinner_.setSelection(DEFAULT_POSITION);
+
         menuSpinner_.setAdapter(spinnerAdapter_);
 
         menuSpinner_.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-                String city = parent.getItemAtPosition(pos).toString();
-                ListView listView = (ListView) getActivity().findViewById(R.id.list_view);
-                if (city.equals(LINEAR)) {
-                    listView.setAdapter(adapterForLinear_);
-                    adapterForRelative_.notifyDataSetChanged();
-                } else if (city.equals(RELATIVE)) {
-                    listView.setAdapter(adapterForRelative_);
-                    adapterForLinear_.notifyDataSetChanged();
-                }
+                String spinnerMode = parent.getItemAtPosition(pos).toString();
 
+                ListView listView = (ListView) getActivity().findViewById(R.id.list_view);
+
+                layoutMode_ = Mode.get(spinnerMode);
+
+                switch (layoutMode_) {
+                    case LINEAR:
+                        listView.setAdapter(linearAdapter_);
+                        linearAdapter_.notifyDataSetChanged();
+                        break;
+                    case RELATIVE:
+                        listView.setAdapter(relativeAdapter_);
+                        relativeAdapter_.notifyDataSetChanged();
+                        break;
+                    default:
+                        break;
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
-                // TODO Auto-generated method stub
+                // Nothing to do
             }
         });
-
 
         return rootView;
     }
@@ -113,7 +139,7 @@ public class ActivityForLab57Fragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ListView listView = (ListView) getActivity().findViewById(R.id.list_view);
-        listView.setAdapter(adapterForRelative_);
+        int position = menuSpinner_.getSelectedItemPosition();
+        menuSpinner_.setSelection(position);
     }
 }

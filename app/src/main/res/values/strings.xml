@@ -5,10 +5,11 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
 
+    <!--Values for buttons in the main activity -->
+    <string name="button_filler_56_activity">Launch Lab #56</string>
+    <string name="button_filler_57_activity">Launch Lab #57</string>
+
     <!--All values for action bar menu -->
     <string name="action_settings">Settings</string>
-    <string name = "linear_layout">Linear Layout</string>
-    <string name = "lab">Next lab</string>
     <string name="title_activity_big_list">BigListActivity</string>
-    <string name="hello_world">Hello world!</string>
 </resources>

@@ -45,14 +45,13 @@ public class BigListActivityFragment extends  android.support.v4.app.Fragment{
         List<ItemInfo> values = new ArrayList<ItemInfo>();
 
         int fictionalId = 1;
-        for (int i = 0; i < COUNT; i++){
+        for (int i = 0; i < COUNT; i++) {
             ItemInfo singleItem = new ItemInfo(fictionalId, TITLE + i, DESCRIPTION + i);
             values.add(singleItem);
-            fictionalId ++;
-            if (fictionalId >4) {
+            fictionalId++;
+            if (fictionalId > 4) {
                 fictionalId = 1;
             }
-
         }
 
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);

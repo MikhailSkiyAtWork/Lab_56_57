@@ -1,6 +1,5 @@
 package com.example.admin.lab_56_57;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -12,7 +11,7 @@ public class ActivityForLab57 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activity_for_lab57);
+        setContentView(R.layout.activity_for_lab57);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new ActivityForLab57Fragment())

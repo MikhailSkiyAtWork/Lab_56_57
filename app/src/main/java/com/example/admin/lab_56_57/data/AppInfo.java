@@ -1,12 +1,6 @@
 package com.example.admin.lab_56_57.data;
 
-import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
-import android.telephony.SignalStrength;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
 
 /**
  * Created by Mikhail Valuyskiy on 21.05.2015.
@@ -16,18 +10,33 @@ import java.util.PriorityQueue;
  * Describes different information about app
  */
 public class AppInfo {
-    public String appname;
-    public int targetSdkVersion;
-    public double size;
-    public Drawable icon;
+    private String title_;
+    private int targetSdkVersion_;
+    private double size_;
+    private Drawable icon_;
 
-    public AppInfo(String appname, int version, double size,Drawable icon) {
-        this.appname = appname;
-        this.targetSdkVersion = version;
-        this.size = size;
-        this.icon = icon;
+    public AppInfo(String appname, int version, double size, Drawable icon) {
+        this.title_ = appname;
+        this.targetSdkVersion_ = version;
+        this.size_ = size;
+        this.icon_ = icon;
     }
 
+    public String getTitle_() {
+        return title_;
+    }
+
+    public int getTargetSdkVersion_() {
+        return targetSdkVersion_;
+    }
+
+    public double getSize_() {
+        return size_;
+    }
+
+    public Drawable getIcon_() {
+        return icon_;
+    }
 }
 
 

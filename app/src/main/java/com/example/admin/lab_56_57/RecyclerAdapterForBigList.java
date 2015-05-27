@@ -23,7 +23,6 @@ public class RecyclerAdapterForBigList extends RecyclerView.Adapter<CustomHolder
         this.listOfItems_ = values;
     }
 
-
     @Override
     public CustomHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.big_list_item,null);
@@ -34,9 +33,9 @@ public class RecyclerAdapterForBigList extends RecyclerView.Adapter<CustomHolder
     @Override
     public void onBindViewHolder(CustomHolder holder, int i){
         ItemInfo itemInfo = listOfItems_.get(i);
-        holder.getTitle().setText(itemInfo.title);
-        holder.getDescription().setText(itemInfo.description);
-        setImage(holder, itemInfo.imageId);
+        holder.getTitle().setText(itemInfo.getTitle());
+        holder.getDescription().setText(itemInfo.getDescription());
+        setImage(holder, itemInfo.getImageId());
     }
 
     @Override

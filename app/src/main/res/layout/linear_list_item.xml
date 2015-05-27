@@ -13,7 +13,7 @@
     <LinearLayout
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingLeft="30dp"
+        android:paddingLeft="@dimen/common_padding_left_for_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -27,7 +27,7 @@
         <TextView
             android:id="@+id/list_item_details"
             android:text="@string/description"
-            android:paddingTop="10dp"
+            android:paddingTop="@dimen/common_padding_top_for_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -41,8 +41,8 @@
         <ImageView
             android:id="@+id/list_item_small_image"
             android:src="@mipmap/ic_launcher"
-            android:layout_width="25dp"
-            android:layout_height="25dp" />
+            android:layout_width="@dimen/common_width_for_list"
+            android:layout_height="@dimen/common_height_for_list" />
 
     </LinearLayout>
 

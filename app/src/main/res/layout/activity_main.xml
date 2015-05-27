@@ -5,16 +5,16 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/launcher56"
+        android:id="@+id/launch_56_activity_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Launch Lab #56" />
+        android:text="@string/button_filler_56_activity" />
 
     <Button
-        android:id="@+id/launcher57"
+        android:id="@+id/launch_57_activity_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Launch Lab #57" />
+        android:text="@string/button_filler_57_activity" />
 
 </LinearLayout>
 
