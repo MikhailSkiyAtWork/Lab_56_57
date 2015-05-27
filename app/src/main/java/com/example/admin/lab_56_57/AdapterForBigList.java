@@ -24,7 +24,7 @@ public class AdapterForBigList extends ArrayAdapter<ItemInfo> {
     /**
      * Represent the subitems of menuItem like TextView etc. for ViewHolder pattern
      */
-    private static class ViewHolder_ {
+    private static class viewHolder {
         TextView nameOfItemView;
         TextView descriptionOfItemView;
         ImageView imageView;
@@ -36,18 +36,18 @@ public class AdapterForBigList extends ArrayAdapter<ItemInfo> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder_ viewHolder;
+        viewHolder viewHolder;
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.big_list_item, parent, false);
-            viewHolder = new ViewHolder_();
+            viewHolder = new viewHolder();
 
             viewHolder.nameOfItemView = (TextView) convertView.findViewById(R.id.big_list_item_title);
             viewHolder.descriptionOfItemView = (TextView) convertView.findViewById(R.id.big_list_item_details);
             viewHolder.imageView = (ImageView) convertView.findViewById(R.id.big_list_item_image_view);
             convertView.setTag(viewHolder);
         } else {
-            viewHolder = (ViewHolder_) convertView.getTag();
+            viewHolder = (AdapterForBigList.viewHolder) convertView.getTag();
         }
 
         viewHolder.nameOfItemView.setText(getItem(position).getTitle_());
@@ -63,7 +63,7 @@ public class AdapterForBigList extends ArrayAdapter<ItemInfo> {
      * @param viewHolder
      * @param imageId
      */
-    private void setImage(ViewHolder_ viewHolder, int imageId) {
+    private void setImage(viewHolder viewHolder, int imageId) {
         switch (imageId) {
             case 1:
                 viewHolder.imageView.setImageResource(R.mipmap.clear);
