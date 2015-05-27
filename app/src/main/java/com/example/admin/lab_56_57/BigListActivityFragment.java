@@ -15,6 +15,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SimpleTimeZone;
+import java.util.UUID;
 
 import com.example.admin.lab_56_57.data.ItemInfo;
 
@@ -46,7 +47,8 @@ public class BigListActivityFragment extends  android.support.v4.app.Fragment{
 
         int fictionalId = 1;
         for (int i = 0; i < COUNT; i++) {
-            ItemInfo singleItem = new ItemInfo(fictionalId, TITLE + i, DESCRIPTION + i);
+            String randomString = UUID.randomUUID().toString();
+            ItemInfo singleItem = new ItemInfo(fictionalId, TITLE + i, DESCRIPTION + i + randomString);
             values.add(singleItem);
             fictionalId++;
             if (fictionalId > 4) {
