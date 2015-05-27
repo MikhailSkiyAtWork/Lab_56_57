@@ -18,20 +18,15 @@ public class ItemInfo {
         this.description_ = description;
     }
 
-    public String getTitle_() {
+    public String getTitle() {
         return title_;
     }
 
-    public String getDescription_() {
+    public String getDescription() {
         return description_;
     }
 
-    public int getImageId_() {
+    public int getImageId() {
         return imageId_;
-    }
-
-    public ItemInfo(String title, String description) {
-        this.title_ = title;
-        this.description_ = description;
     }
 }

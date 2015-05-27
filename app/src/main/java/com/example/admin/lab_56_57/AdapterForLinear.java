@@ -53,10 +53,10 @@ public class AdapterForLinear extends ArrayAdapter<AppInfo> {
             viewHolder = (ViewHolder)convertView.getTag();
         }
 
-        viewHolder.nameTextView_.setText(getItem(position).getTitle_());
-        viewHolder.detailsTextView_.setText(Utils.makeDescription(getItem(position).getTargetSdkVersion_(), getItem(position).getSize_()));
+        viewHolder.nameTextView_.setText(getItem(position).getTitle());
+        viewHolder.detailsTextView_.setText(Utils.makeDescription(getItem(position).getTargetSdkVersion(), getItem(position).getSize()));
         viewHolder.imageView_.setImageResource(R.mipmap.ic_launcher);
-        viewHolder.smallImageView_.setImageDrawable(getItem(position).getIcon_());
+        viewHolder.smallImageView_.setImageDrawable(getItem(position).getIcon());
 
         // This code helps hide every second description field
         if (Utils.isItSecondItem(position)){
