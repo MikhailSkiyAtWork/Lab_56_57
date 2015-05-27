@@ -57,10 +57,14 @@ public class AdapterForRelative extends ArrayAdapter<AppInfo> {
         // This code helps hide every second description field
         if (Utils.isItSecondItem(position)) {
             viewHolder.detailsTextView_.setVisibility(View.INVISIBLE);
+        } else {
+            viewHolder.detailsTextView_.setVisibility(View.VISIBLE);
         }
         // This code helps hide every 3rd image in ListView
         if (Utils.isItThirdItem(position)) {
             viewHolder.smallImageView_.setVisibility(View.INVISIBLE);
+        } else {
+            viewHolder.smallImageView_.setVisibility(View.VISIBLE);
         }
 
         return convertView;
