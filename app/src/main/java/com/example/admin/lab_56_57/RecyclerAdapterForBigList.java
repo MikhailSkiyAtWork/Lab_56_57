@@ -11,9 +11,9 @@ import com.example.admin.lab_56_57.data.*;
 import java.util.List;
 
 /**
- * Created by Admin on 22.05.2015.
+ * Created by Mikhail Valuyskiy on 22.05.2015.
  */
-public class RecyclerAdapterForBigList extends RecyclerView.Adapter<CustomHolder> {
+public class RecyclerAdapterForBigList extends RecyclerView.Adapter<ViewHolder> {
 
     private List<ItemInfo> listOfItems_;
     private Context context_;
@@ -24,14 +24,14 @@ public class RecyclerAdapterForBigList extends RecyclerView.Adapter<CustomHolder
     }
 
     @Override
-    public CustomHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.big_list_item,null);
-        CustomHolder holder = new CustomHolder(view);
+        ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(CustomHolder holder, int i){
+    public void onBindViewHolder(ViewHolder holder, int i){
         ItemInfo itemInfo = listOfItems_.get(i);
         holder.getTitle().setText(itemInfo.getTitle());
         holder.getDescription().setText(itemInfo.getDescription());
@@ -45,11 +45,8 @@ public class RecyclerAdapterForBigList extends RecyclerView.Adapter<CustomHolder
 
     /**
      * Sets the image depends on the position
-     *
-     * @param holder
-     * @param imageId
      */
-    private void setImage(CustomHolder holder, int imageId) {
+    private void setImage(ViewHolder holder, int imageId) {
 
         switch (imageId) {
             case 1:
@@ -65,5 +62,4 @@ public class RecyclerAdapterForBigList extends RecyclerView.Adapter<CustomHolder
                 holder.getImage().setImageResource(R.mipmap.fog);
         }
     }
-
 }
