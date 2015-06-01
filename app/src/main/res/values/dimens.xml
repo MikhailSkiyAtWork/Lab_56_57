@@ -9,4 +9,7 @@
     <dimen name="common_width_for_list">25dp</dimen>
     <dimen name="common_height_for_list">25dp</dimen>
 
+    <!-- Value for divider -->
+    <dimen name="height_for_divider">3dp</dimen>
+
 </resources>

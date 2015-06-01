@@ -25,13 +25,13 @@ public class RecyclerAdapterForBigList extends RecyclerView.Adapter<ViewHolder> 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.big_list_item,null);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.big_list_item, null);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int i){
+    public void onBindViewHolder(ViewHolder holder, int i) {
         ItemInfo itemInfo = listOfItems_.get(i);
         holder.getTitle().setText(itemInfo.getTitle());
         holder.getDescription().setText(itemInfo.getDescription());
@@ -39,8 +39,8 @@ public class RecyclerAdapterForBigList extends RecyclerView.Adapter<ViewHolder> 
     }
 
     @Override
-    public int getItemCount(){
-        return(listOfItems_ != null ? listOfItems_.size() : 0);
+    public int getItemCount() {
+        return (listOfItems_ != null ? listOfItems_.size() : 0);
     }
 
     /**
