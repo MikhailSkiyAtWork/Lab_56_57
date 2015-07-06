@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SimpleTimeZone;
+import java.util.UUID;
 
 import com.example.admin.lab_56_57.data.ItemInfo;
 
@@ -22,7 +25,7 @@ import com.example.admin.lab_56_57.data.ItemInfo;
  */
 public class BigListActivityFragment extends  android.support.v4.app.Fragment{
 
-    private AdapterForBigList adapterForBigList_;
+    private RecyclerAdapterForBigList adapterForBigList_;
     // Total amount of items
     private final static int COUNT = 20000;
     private final static String TITLE = "Name of item ";
@@ -44,7 +47,8 @@ public class BigListActivityFragment extends  android.support.v4.app.Fragment{
 
         int fictionalId = 1;
         for (int i = 0; i < COUNT; i++) {
-            ItemInfo singleItem = new ItemInfo(fictionalId, TITLE + i, DESCRIPTION + i);
+            String randomString = UUID.randomUUID().toString();
+            ItemInfo singleItem = new ItemInfo(fictionalId, TITLE + i, DESCRIPTION + i + randomString);
             values.add(singleItem);
             fictionalId++;
             if (fictionalId > 4) {
@@ -52,9 +56,11 @@ public class BigListActivityFragment extends  android.support.v4.app.Fragment{
             }
         }
 
-        ListView listView = (ListView) rootView.findViewById(R.id.big_list_view);
-        adapterForBigList_ = new AdapterForBigList(this.getActivity(), values);
-        listView.setAdapter(adapterForBigList_);
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+
+        adapterForBigList_ = new RecyclerAdapterForBigList(this.getActivity(),values);
+        recyclerView.setAdapter(adapterForBigList_);
 
         return rootView;
     }

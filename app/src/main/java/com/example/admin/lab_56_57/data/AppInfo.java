@@ -22,19 +22,19 @@ public class AppInfo {
         this.icon_ = icon;
     }
 
-    public String getTitle_() {
+    public String getTitle() {
         return title_;
     }
 
-    public int getTargetSdkVersion_() {
+    public int getTargetSdkVersion() {
         return targetSdkVersion_;
     }
 
-    public double getSize_() {
+    public double getSize() {
         return size_;
     }
 
-    public Drawable getIcon_() {
+    public Drawable getIcon() {
         return icon_;
     }
 }
